@@ -24,7 +24,12 @@ namespace faegtodo.Controllers
             ViewData["sobrenome"] = "Coan";
             //return Redirect("https://www.univille.br");
             //return Content("<h1>Isso é muito feio...</h1>");
-            return NotFound("Voce não vai achar nada aqui...");
+            //return NotFound("Voce não vai achar nada aqui...");
+
+            //var novoTeste = new Teste();
+            //novoTeste.Nome = "Zezinho da Silva!";
+            //return View(novoTeste);
+            return View();
         }
 
         public IActionResult Privacy()
