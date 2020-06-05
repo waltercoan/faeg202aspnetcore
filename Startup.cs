@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using faegtodo.Db;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,8 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
-
+using faegtodo.Services;
 namespace faegtodo
 {
     public class Startup
@@ -20,7 +20,6 @@ namespace faegtodo
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -30,6 +29,8 @@ namespace faegtodo
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("AppDbContext")));
+
+            services.AddScoped<IClientService,ClientService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

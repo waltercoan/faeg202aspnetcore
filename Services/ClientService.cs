@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using faegtodo.Db;
 using faegtodo.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace faegtodo.Services
 {
@@ -13,9 +14,9 @@ namespace faegtodo.Services
             this.context = context;
         }
 
-        public Task<IList<Client>> GetAll()
+        public async Task<IList<Client>> GetAll()
         {
-            throw new System.NotImplementedException();
+            return await context.Clients.ToArrayAsync();
         }
     }
 }
