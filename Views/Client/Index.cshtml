@@ -1,0 +1,24 @@
+@model IList<faegtodo.Models.Client>;
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<h2>Clientes</h2>
+<table class="table">
+    <thead>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Endereço</th>
+    </thead>
+    <tbody>
+        @foreach (var umclient in Model)
+        {
+        <tr>
+            <td>@umclient.Id</td>
+            <td>@umclient.Name</td>
+            <td>@umclient.Address</td>
+        </tr>
+        }
+    </tbody>
+</table>
