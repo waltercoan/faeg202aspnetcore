@@ -18,5 +18,11 @@ namespace faegtodo.Services
         {
             return await context.Clients.ToArrayAsync();
         }
+
+        public void Save(Client client)
+        {
+            context.Clients.Add(client);
+            context.SaveChanges();
+        }
     }
 }

@@ -25,7 +25,12 @@ namespace faegtodo.Migrations
             migrationBuilder.InsertData(
                 table: "Clients",
                 columns: new[] { "Id", "Address", "Birthday", "Name" },
-                values: new object[] { 1, "Rua lalalal 1000", new DateTime(2020, 5, 29, 21, 22, 45, 115, DateTimeKind.Local).AddTicks(1355), "Zezinho" });
+                values: new object[] { 1, "Rua lalalal 1000", new DateTime(2020, 6, 12, 20, 43, 55, 642, DateTimeKind.Local).AddTicks(367), "Zezinho" });
+
+            migrationBuilder.InsertData(
+                table: "Clients",
+                columns: new[] { "Id", "Address", "Birthday", "Name" },
+                values: new object[] { 2, "Rua lulull 200", new DateTime(2020, 6, 12, 20, 43, 55, 643, DateTimeKind.Local).AddTicks(5590), "Huguinho" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
