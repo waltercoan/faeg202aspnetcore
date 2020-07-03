@@ -7,6 +7,7 @@ namespace faegtodo.Services
     public interface IClientService{
         Task<IList<Client>> GetAll();
         void Save(Client client);
+        Task<Client> GetById(int Id);
     }
     
 }

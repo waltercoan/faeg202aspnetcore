@@ -7,11 +7,12 @@
 @Html.ActionLink("Novo", "Form", "Client", null, new {@class = "btn btn-primary"})
 
 <h2>Clientes</h2>
-<table class="table">
+<table class="table" id="clientes">
     <thead>
         <th>Id</th>
         <th>Nome</th>
         <th>Endereço</th>
+        <th></th>
     </thead>
     <tbody>
         @foreach (var umclient in Model)
@@ -20,7 +21,32 @@
             <td>@umclient.Id</td>
             <td>@umclient.Name</td>
             <td>@umclient.Address</td>
+            <td>@Html.ActionLink("Alterar","Edit","Client",
+                new {id=@umclient.Id} ,new {@class = "btn btn-primary"})
+                <button class='btn btn-danger js-delete' data-customer-id='@umclient.Id'>Excluir</button>
+            </td>
         </tr>
         }
     </tbody>
 </table>
+
+@section Scripts { 
+    <script type="text/javascript">  
+        $(document).ready(function(){ 
+            $("#clientes").on("click", ".js-delete", function(){ 
+                var button = $(this); 
+                bootbox.confirm("Você tem certeza que quer excluir este cliente?",function(result){ 
+                    if(result){ 
+                        $.ajax({ 
+                            url: "/Client/Delete/" + button.attr("data-customer-id"), 
+                            method: "GET", 
+                            success: function () { 
+                                window.location.href = "/Client/" 
+                            } 
+                        }); 
+                    } 
+                }); 
+            }); 
+        });  
+    </script> 
+} 

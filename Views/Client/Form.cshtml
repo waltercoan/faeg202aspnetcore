@@ -7,6 +7,9 @@
 <h2>Cliente</h2> 
 
 @using (Html.BeginForm("Form","Client")){ 
+
+    @Html.HiddenFor(m => m.Id)
+    
     <div class="form-group"> 
         @Html.LabelFor(m => m.Name) 
         @Html.EditorFor(m => m.Name) 

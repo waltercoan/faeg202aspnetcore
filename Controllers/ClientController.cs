@@ -36,6 +36,12 @@ namespace faegtodo.Controllers
 
             return View(client);
         }
+        [HttpGet]
+        public async Task<IActionResult> Edit(int Id){
+            var client = await service.GetById(Id);
+            return View("Form",client);
+        }
+
 
     }    
 }
