@@ -23,16 +23,19 @@ namespace faegtodo.Controllers
         [HttpGet]
         public IActionResult Form(){
             Console.WriteLine("METODO GET");
-            return View();
+            var client = new Client();
+            return View(client);
         }
         [HttpPost]
         public IActionResult Form(Client client){
             
+            Console.WriteLine("Metodo POST");
             if(ModelState.IsValid)
             {
                 service.Save(client);
                 return RedirectToAction("Index");
             }
+            
 
             return View(client);
         }
@@ -42,6 +45,11 @@ namespace faegtodo.Controllers
             return View("Form",client);
         }
 
+        [HttpGet]
+        public IActionResult Delete(int Id){
+            service.Delete(Id);
+            return RedirectToAction("Index");
+        }
 
     }    
 }

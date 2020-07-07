@@ -14,6 +14,16 @@ namespace faegtodo.Services
             this.context = context;
         }
 
+        public void Delete(int id)
+        {
+            var customer = new Client(){
+                Id = id
+            };
+
+            context.Clients.Remove(customer);
+            context.SaveChanges();
+        }
+
         public async Task<IList<Client>> GetAll()
         {
             return await context.Clients.ToArrayAsync();
