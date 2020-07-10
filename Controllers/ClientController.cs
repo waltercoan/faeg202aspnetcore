@@ -4,6 +4,7 @@ using faegtodo.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using faegtodo.Models;
+using System.Collections.Generic;
 
 namespace faegtodo.Controllers
 {
@@ -15,10 +16,20 @@ namespace faegtodo.Controllers
             this.service = service;
         }
         [HttpGet]
-        public async Task<IActionResult> Index(){
+        public async Task<IActionResult> Index(String search){
             var _listClient = await this.service.GetAll();
             return View(_listClient);
 
+        }
+        [HttpPost]
+        public async Task<IActionResult> Search(String search){
+            IList<Client> _listClient = null;
+            if(search == null){
+                _listClient = await this.service.GetAll();
+            }else{
+                _listClient = await this.service.GetAllByName(search);
+            }
+            return View("Index",_listClient);
         }
         [HttpGet]
         public IActionResult Form(){

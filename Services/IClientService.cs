@@ -9,6 +9,7 @@ namespace faegtodo.Services
         void Save(Client client);
         Task<Client> GetById(int Id);
         void Delete(int id);
+        Task<IList<Client>> GetAllByName(string name);
     }
     
 }

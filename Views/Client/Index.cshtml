@@ -7,6 +7,15 @@
 @Html.ActionLink("Novo", "Form", "Client", null, new {@class = "btn btn-primary"})
 
 <h2>Clientes</h2>
+@using (Html.BeginForm("Search","Client")){ 
+
+    <div class="form-group"> 
+        <input type="text" name="search">
+        <button type="submit" class="btn btn-primary">Buscar</button> 
+    </div> 
+    
+}
+
 <table class="table" id="clientes">
     <thead>
         <th>Id</th>

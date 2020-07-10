@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using faegtodo.Db;
 using faegtodo.Models;
 using Microsoft.EntityFrameworkCore;
-
+using System.Linq;
 namespace faegtodo.Services
 {
     public class ClientService : IClientService
@@ -27,6 +28,11 @@ namespace faegtodo.Services
         public async Task<IList<Client>> GetAll()
         {
             return await context.Clients.ToArrayAsync();
+        }
+
+        public async Task<IList<Client>> GetAllByName(string name)
+        {
+            return await context.Clients.Where(c => EF.Functions.Like(c.Name,String.Format("%{0}%",name))).ToArrayAsync();
         }
 
         public async Task<Client> GetById(int Id)
